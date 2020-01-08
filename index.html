@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!-- this is our vue container / template {{{ body }}} -->
+    <main id="app">
+        <h1>{{ message }}</h1>
+
+        <ul>
+            <li v-for="item in collection">
+                <p @click="logClicked">{{item.name}}, {{item.role}}</p>
+            </li>
+        </ul>
+    </main>
+
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>
