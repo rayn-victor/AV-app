@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+* { margin: 0; border: 0; padding: 0; }
+
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+a { 
+    text-decoration: none; 
+
+    img { width: 150px; }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgb(13, 13, 29);
+    color: #ccc;
+
+    font-size: 16px;
+    font-family: arial, helvetica, sans-serif;
+}
+
+main { flex: 1 0 auto; }
+
+.hidden { display: none; }
+
+header, footer { padding: 20px 10px; background-color: rgb(27, 34, 57); color: white; position: sticky;}
+
+footer { 
+    width: 100%; 
+    flex-shrink: 0; 
+    text-align: center;
+
+    p { font-size: 0.8em; }
+}
+
+// user styles here -> header controls
+@import 'modules/_userStyles';
+
+// global list styles for layout
+
+ul { 
+    margin: 0 auto;
+
+    li { display: inline-block; padding: 0 8px; }
+}
+
+// end list styles
+
+.back-home {
+    color: white;
+    margin-bottom: 16px;
+    display: block;
+    padding-left: 8px;
+}
+
+// movie styles here
+@import 'modules/movieStyles';
+
+.up-arrow { text-align: center }
+
+.up-arrow span {
+    font-size: 2em;
+    padding: 8px 15px 8px;
+    border-radius: 50%;
+    font-weight: bolder;
+    background-color: rgba(255,255,255,0.2);
+    cursor: pointer;
+    display: none;
+}
+
+.show-scroller {display: inline-block !important; }
+
+#logo { width: 100px; margin: 10px 0 0 10px; position: absolute; }
+
+.mainCon { display: flex; justify-content: space-between; margin-top: 40px;}
+
+.watchList { display: flex; width: 300px; flex-direction: column; border: 20px solid rgb(27, 34, 57); border-bottom: none;}
+.watchList h3 { color: white; text-align: left; background-color: rgb(27, 34, 57); padding-bottom: 20px;}
+
+.instructions { padding-top: 30px; text-align: center; color: white; margin-bottom: 10px;}
+
+.video-poster-wrapper { text-align: center; } 
+.video-poster-wrapper img { margin: 20px 0 20px 0; }
