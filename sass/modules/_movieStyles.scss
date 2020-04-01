@@ -1,0 +1,21 @@
+.hidden-movies {
+  width: 1280px;
+  overflow: hidden;
+  transition: all 0.7s;
+  max-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+  
+.show-movie { max-height: 100%; }
+
+video { width: 1280px; height: 720px; user-select: none; }
+
+.movie-title {
+  position: relative;
+  margin: 20px;
+}
+
+.movie-details { width: 100%; display: flex; margin: 20px; }
+.movie-details p { width: 1000px; }

@@ -1,22 +1,78 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.15/dist/vue.js"></script>
+  <title>A/V Accessibility</title>
 </head>
+
 <body>
-<!-- this is our vue container / template {{{ body }}} -->
-    <main id="app">
-        <h1>{{ message }}</h1>
+  <main id="app">
+    <header>
+      <h1 class="hidden">A/V Accessibility</h1>
+      <nav>
+        <img src="images/logo-white.svg" id="logo">
+        <ul id="headerNav">
+          <!-- avatar / user icon-->
+          <!-- if the user has an avatar, show it -->
+          <li v-if="user.avatar">
+            <img :src=" 'images/' + user.settings.avatar " alt="user avatar" class="u-avatar">
+          </li>
 
-        <ul>
-            <li v-for="item in collection">
-                <p @click="logClicked">{{item.name}}, {{item.role}}</p>
-            </li>
+          <!-- else show this -->
+          <li v-else>
+            <i class="fas fa-user"></i>
+          </li>
+          <!-- end avatar -->
+
+          <!-- settings icon / functionality -->
+          <!-- if our user object has admin rights, then show this -->
+          <li v-if="user.settings.isadmin">
+            <i v-on:click="setUserPrefs" class="fas fa-cog" role="button"></i>
+          </li>
+          <!-- end user settings -->
+
+          <!-- log in / log out -->
+          <li>
+            <i @click="userLogin" class="fas fa-power-off u-login" role="button" :class="{ 'logged-in' : user.isLoggedIn }"></i>
+          </li>
         </ul>
-    </main>
+      </nav>
+    </header>
+    <section class="mainCon">
+        <section class="watchList">
+            <h3>My Watchlist</h3>
+            <p class="instructions">
+                <i>Click to play.</i>
+            </p>
+            <ul class="video-poster-wrapper">
+            <li v-for="movie in videodata">
+                <a :href="movie.vidsource" @click.prevent="showMovieDetails(movie)">
+                <img :src="'images/' + movie.thumb" alt="movie poster">
+                </a>
+            </li>
+            </ul>
+        </section>
 
-    <script src="js/main.js" type="module"></script>
+        <section class="hidden-movies" :class="{ 'show-movie' : showDetails}">  
+        
+        <player v-bind:movie="movie" />
+        </section>
+
+        <div class="up-arrow"><span>^</span></div>
+    </section>
+  </main>
+  
+
+  <footer>
+  </footer>
+  
+  <script defer src="js/main.js"></script>
 </body>
+
 </html>
